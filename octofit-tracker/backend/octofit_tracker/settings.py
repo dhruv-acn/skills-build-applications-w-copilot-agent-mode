@@ -1,3 +1,5 @@
+import os
+
 # Custom user model
 AUTH_USER_MODEL = 'octofit_tracker.User'
 """
@@ -27,7 +29,13 @@ SECRET_KEY = 'django-insecure-12@zz+sre4d99aq5yy*c*^1crk%b+*p$n-b-11e6@jc1r2_8#%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# allow the codespace URL plus localhost/127.0.0.1 when running locally
+codespace = os.environ.get('CODESPACE_NAME')
+if codespace:
+    ALLOWED_HOSTS = [f"{codespace}-8000.app.github.dev", "localhost", "127.0.0.1", "testserver"]
+else:
+    # fallback during normal local development
+    ALLOWED_HOSTS = ["*", "testserver"]
 
 
 # Application definition
