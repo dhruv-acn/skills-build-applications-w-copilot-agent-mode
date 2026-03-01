@@ -1,0 +1,8 @@
+/* custom overrides or additional spacing */
+.app-container {
+  font-family: Arial, sans-serif;
+}
+
+.main-view {
+  padding: 16px;
+}
